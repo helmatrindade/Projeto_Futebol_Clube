@@ -1,4 +1,4 @@
-import { Model, DataTypes } from "sequelize";
+import { Model, DataTypes } from 'sequelize';
 import db from '.';
 
 class SequelizeTeams extends Model {
@@ -6,23 +6,24 @@ class SequelizeTeams extends Model {
   declare teamName: string;
 }
 
-SequelizeTeams.init({
-  id: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    primaryKey: true,
-    autoIncrement: true,
+SequelizeTeams.init(
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
+    },
+    teamName: {
+      type: DataTypes.STRING(100),
+      allowNull: false,
+    },
   },
-  teamname: {
-    type: DataTypes.STRING(100),
-    allowNull: false,
-  },
-},
   {
     sequelize: db,
     modelName: 'teams',
     timestamps: true,
-  }
+  },
 );
 
 export default SequelizeTeams;

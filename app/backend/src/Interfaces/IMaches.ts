@@ -5,4 +5,4 @@ export interface IMatch {
   awayTeamId: number;
   awayTeamGoals: number;
   inProgress: boolean;
-};
+}
