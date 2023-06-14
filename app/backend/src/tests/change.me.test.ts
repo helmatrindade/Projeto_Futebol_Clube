@@ -12,7 +12,7 @@ chai.use(chaiHttp);
 
 const { expect } = chai;
 
-describe('Seu teste', () => {
+describe('Teams Api', () => {
   /**
    * Exemplo do uso de stubs com tipos
    */
@@ -39,7 +39,20 @@ describe('Seu teste', () => {
   //   expect(...)
   // });
 
-  it('Seu sub-teste', () => {
-    expect(false).to.be.eq(true);
+  it('Recupera um time por id', async () => {
+    const response = await chai.request(app).get('/teams/1');
+
+    expect(response.status).to.equal(200);
+    expect(response.body).to.deep.equal({
+      id: 1,
+      teamName: 'Example Team',
+    });
+  });
+
+  it('deve retornar 404 para time inexistente', async () => {
+    const response = await chai.request(app).get('/teams/999');
+
+    expect(response.status).to.equal(404);
+    expect(response.body).to.deep.equal({ message: 'Team 999 not found' });
   });
 });
