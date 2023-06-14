@@ -18,11 +18,11 @@ SequelizeTeams.init({
     allowNull: false,
   },
 },
-{
-  sequelize: db,
-  modelName: 'teams',
-  timestamps: true,
-}
+  {
+    sequelize: db,
+    modelName: 'teams',
+    timestamps: true,
+  }
 );
 
 export default SequelizeTeams;

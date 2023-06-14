@@ -3,11 +3,11 @@ import db from '.';
 
 class MatchModel extends Model {
   declare id: number;
-  declare home_team_id: number;
-  declare home_team_goals: number;
-  declare away_team_id: number;
-  declare away_team_goals: number;
-  declare in_progress: boolean;
+  declare homeTeamId: number;
+  declare homeTeamGoals: number;
+  declare awayTeamId: number;
+  declare awayTeamGoals: number;
+  declare inProgress: boolean;
 }
 
 MatchModel.init({
@@ -16,23 +16,23 @@ MatchModel.init({
     primaryKey: true,
     autoIncrement: true,
   },
-  home_team_id: {
+  homeTeamId: {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
-  home_team_goals: {
+  homeTeamGoals: {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
-  away_team_id: {
+  awayTeamId: {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
-  away_team_goals: {
+  awayTeamGoals: {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
-  in_progress: {
+  inProgress: {
     type: DataTypes.BOOLEAN,
     allowNull: false,
   },

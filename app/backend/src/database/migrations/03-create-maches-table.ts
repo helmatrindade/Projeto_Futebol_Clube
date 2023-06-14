@@ -1,7 +1,7 @@
 import { QueryInterface, DataTypes, Model } from "sequelize";
 import { IMatch } from "../../Interfaces/IMaches";
 
-export default  {
+export default {
   up(queryInterface: QueryInterface) {
     return queryInterface.createTable<Model<IMatch>>('matches', {
       id: {
@@ -10,25 +10,30 @@ export default  {
         primaryKey: true,
         type: DataTypes.INTEGER,
       },
-      home_team_id: {
+      homeTeamId: {
         allowNull: false,
         type: DataTypes.INTEGER,
+        field: 'home_team_id'
       },
-      home_team_goals: {
+      homeTeamGoals: {
         allowNull: false,
         type: DataTypes.INTEGER,
+        field: 'home_team_goals'
       },
-      away_team_id: {
+      awayTeamId: {
         allowNull: false,
         type: DataTypes.INTEGER,
+        field: 'away_team_id'
       },
-      away_team_goals: {
+      awayTeamGoals: {
         allowNull: false,
         type: DataTypes.INTEGER,
+        field: 'away_team_goals'
       },
-      in_progress: {
+      inProgress: {
         allowNull: false,
         type: DataTypes.BOOLEAN,
+        field: 'in_progress'
       },
     });
   },

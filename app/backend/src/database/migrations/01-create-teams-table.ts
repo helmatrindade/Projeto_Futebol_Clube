@@ -3,7 +3,7 @@ import { ITeam } from '../../Interfaces/ITeam';
 
 export default {
   up(queryInterface: QueryInterface) {
-      return queryInterface.createTable<Model<ITeam>>('teams', {
+    return queryInterface.createTable<Model<ITeam>>('teams', {
       id: {
         allowNull: false,
         autoIncrement: true,
