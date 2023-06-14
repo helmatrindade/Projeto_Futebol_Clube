@@ -1,11 +1,11 @@
 const map: Record<string, number> = {
-  SUCCESSFUL: 200,
-  UNAUTHORIZED: 401,
-  INVALID_DATA: 400,
-  NOT_FOUND: 404,
-  CONFLICT: 409,
+  successful: 200,
+  unauthorized: 401,
+  invalidData: 400,
+  notFound: 404,
+  conflict: 409,
 };
 
 export default function mapStatusHTTP(status: string): number {
-  return map[status] ?? 500;  
+  return map[status.toLowerCase()] ?? 500;
 }

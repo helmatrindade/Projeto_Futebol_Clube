@@ -3,7 +3,7 @@ import db from '.';
 
 export default class TeamsModel extends Model {
   declare id: CreationOptional<number>;
-  declare name: string;
+  declare teamName: string;
 }
 
 TeamsModel.init(
