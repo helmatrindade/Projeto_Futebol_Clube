@@ -1,8 +1,9 @@
-import { QueryInterface, DataTypes } from 'sequelize';
+import { QueryInterface, DataTypes, Model } from 'sequelize';
+import { IUser } from '../../Interfaces/IUsers';
 
-module.exports = {
-  up: async (queryInterface: QueryInterface) => {
-    await queryInterface.createTable('users', {
+export default {
+  up(queryInterface: QueryInterface) {
+    return queryInterface.createTable<Model<IUser>>('users', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -25,17 +26,9 @@ module.exports = {
         allowNull: false,
         type: DataTypes.STRING,
       },
-      createdAt: {
-        allowNull: false,
-        type: DataTypes.DATE,
-      },
-      updatedAt: {
-        allowNull: false,
-        type: DataTypes.DATE,
-      },
     });
   },
-  down: async (queryInterface: QueryInterface) => {
-    await queryInterface.dropTable('users');
+  down(queryInterface: QueryInterface) {
+    return queryInterface.dropTable('users');
   },
 };
