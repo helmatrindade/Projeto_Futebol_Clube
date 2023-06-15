@@ -35,9 +35,10 @@ UserModel.init(
     },
   },
   {
+    underscored: true,
     sequelize: db,
-    modelName: 'User',
-    tableName: 'users',
+    timestamps: false,
+    modelName: 'users',
   },
 );
 
