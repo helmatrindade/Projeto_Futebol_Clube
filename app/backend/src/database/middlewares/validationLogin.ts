@@ -9,7 +9,7 @@ const validateLogin = (req: Request, res: Response, next: NextFunction) => {
   }
 
   if (!validateEmail.test(email) || password.length < 6) {
-    return res.status(400).json({ message: 'Invalid email or password' });
+    return res.status(401).json({ message: 'Invalid email or password' });
   }
 
   next();
