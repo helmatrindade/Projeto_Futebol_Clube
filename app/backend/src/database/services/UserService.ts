@@ -27,7 +27,6 @@ export default class UserService {
       role: user.role,
       username: user.username,
     }, 'jwt_secret');
-
     return { status: 200, data: { token } };
   }
 }
