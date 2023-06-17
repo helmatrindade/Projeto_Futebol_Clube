@@ -21,4 +21,25 @@ export default class MatchService {
     });
     return { status: 'SUCCESSFUL', data: allMatches };
   }
+
+  public static async getMatchesInProgress(inProgress: boolean)
+    : Promise<ServiceResponse<IMatch[]>> {
+    const matchesInProgress = await MatchModel.findAll({
+      where: { inProgress,
+      },
+      include: [
+        {
+          model: TeamsModel,
+          as: 'homeTeam',
+          attributes: ['teamName'],
+        },
+        {
+          model: TeamsModel,
+          as: 'awayTeam',
+          attributes: ['teamName'],
+        },
+      ],
+    });
+    return { status: 'SUCCESSFUL', data: matchesInProgress };
+  }
 }
