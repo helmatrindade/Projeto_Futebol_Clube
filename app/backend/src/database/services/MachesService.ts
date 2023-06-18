@@ -69,4 +69,25 @@ export default class MatchService {
     // Em data  é retornado o objeto com os dados do jogo: ...matches,  mais a mensagem Finished.
     return { status: 'SUCCESSFUL', data: { ...matches, message: 'Finished' } };
   }
+
+  // Partial permite que apenas homeTeamGoals e awayTeamGoals  sejam atualizados.
+  public static async updateMatcheById(id: number, match: Partial<IMatch>)
+    : Promise<ServiceResponse<IMatch>> {
+    const matches = await MatchModel.findByPk(id);
+
+    if (matches === null) {
+      return { status: 'NOT_FOUND', data: { message: 'Matches not found' } };
+    }
+    // Atualiza os dados do jogo.
+    if (match.homeTeamGoals !== undefined) {
+      matches.homeTeamGoals = match.homeTeamGoals;
+    }
+    if (match.awayTeamGoals !== undefined) {
+      matches.awayTeamGoals = match.awayTeamGoals;
+    }
+    // salva no banco de dados
+    await matches.save();
+
+    return { status: 'SUCCESSFUL', data: matches };
+  }
 }

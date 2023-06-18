@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import { IMatch } from '../../Interfaces/IMaches';
 import MatchService from '../services/MachesService';
 
 export default class MatchController {
@@ -20,6 +21,21 @@ export default class MatchController {
     if (serviceResponse.status === 'SUCCESSFUL') {
       serviceResponse.data.message = 'Finished';
     }
+
+    return res.status(200).json(serviceResponse.data);
+  }
+
+  public static async updateMatcheById(_req: Request, res: Response): Promise<Response> {
+    const { id } = _req.params;
+    const { homeTeamGoals, awayTeamGoals } = _req.body;
+
+    const plays: Partial<IMatch> = {
+      homeTeamGoals,
+      awayTeamGoals,
+    };
+
+    const serviceResponse = await MatchService
+      .updateMatcheById(Number(id), plays);
 
     return res.status(200).json(serviceResponse.data);
   }
