@@ -12,4 +12,15 @@ export default class MatchController {
     const serviceResponse = await MatchService.getAllMatches();
     return res.status(200).json(serviceResponse.data);
   }
+
+  public static async updateMatcheByIdFinish(_req: Request, res: Response): Promise<Response> {
+    const { id } = _req.params;
+    const serviceResponse = await MatchService.updateMatcheByIdFinish(Number(id));
+
+    if (serviceResponse.status === 'SUCCESSFUL') {
+      serviceResponse.data.message = 'Finished';
+    }
+
+    return res.status(200).json(serviceResponse.data);
+  }
 }
