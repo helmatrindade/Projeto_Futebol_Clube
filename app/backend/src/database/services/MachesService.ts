@@ -70,7 +70,7 @@ export default class MatchService {
     return { status: 'SUCCESSFUL', data: { ...matches, message: 'Finished' } };
   }
 
-  // Partial permite que apenas homeTeamGoals e awayTeamGoals  sejam atualizados.
+  // Com Partial permite que apenas homeTeamGoals e awayTeamGoals  sejam atualizados.
   public static async updateMatcheById(id: number, match: Partial<IMatch>)
     : Promise<ServiceResponse<IMatch>> {
     const matches = await MatchModel.findByPk(id);
@@ -89,5 +89,18 @@ export default class MatchService {
     await matches.save();
 
     return { status: 'SUCCESSFUL', data: matches };
+  }
+
+  // Partial indica que as propriedades de IMatch são opcionais.
+  public static async createMatches(matches: Partial<IMatch>)
+    : Promise<ServiceResponse<IMatch>> {
+    const creatematches = await MatchModel.create({
+      homeTeamId: matches.homeTeamId,
+      awayTeamId: matches.awayTeamId,
+      homeTeamGoals: matches.homeTeamGoals,
+      awayTeamGoals: matches.awayTeamGoals,
+      inProgress: true,
+    });
+    return { status: 'SUCCESSFUL', data: creatematches };
   }
 }
