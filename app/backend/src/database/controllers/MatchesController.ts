@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { IMatch } from '../../Interfaces/IMaches';
+// import TeamsService from '../services/TeamService';
 import MatchService from '../services/MachesService';
 
 export default class MatchController {
@@ -43,16 +44,13 @@ export default class MatchController {
   public static async createMatches(_req: Request, res: Response): Promise<Response> {
     const { homeTeamId, awayTeamId, homeTeamGoals, awayTeamGoals, inProgress } = _req.body;
 
-    const newMatches: Partial<IMatch> = {
-      homeTeamId,
+    const newMatches: Partial<IMatch> = { homeTeamId,
       awayTeamId,
       homeTeamGoals,
       awayTeamGoals,
       inProgress,
     };
-
     const serviceResponse = await MatchService.createMatches(newMatches);
-
     return res.status(201).json(serviceResponse.data);
   }
 }
