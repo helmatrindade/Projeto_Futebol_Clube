@@ -1,4 +1,4 @@
-export interface leaderboard {
+export interface Leaderboard {
   name: string;
   totalPoints: number;
   totalGames: number;
@@ -7,4 +7,6 @@ export interface leaderboard {
   totalLosses: number;
   goalsFavor: number;
   goalsOwn: number;
+  goalsBalance: number;
+  efficiency: number;
 }
