@@ -1,6 +1,5 @@
 import * as express from 'express';
 import router from './database/routes';
-// import leaderboardRouter from './database/routes/leaderboardRouter';
 
 class App {
   public app: express.Express;
@@ -19,11 +18,6 @@ class App {
   private routes(): void {
     this.app.use(router);
   }
-
-  // private routes(): void {
-  //   this.app.use(router);
-  //   this.app.use('/leaderboard', leaderboardRouter);
-  // }
 
   private config():void {
     const accessControl: express.RequestHandler = (_req, res, next) => {

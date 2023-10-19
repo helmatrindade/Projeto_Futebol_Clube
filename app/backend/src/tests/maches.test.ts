@@ -15,6 +15,7 @@ describe('Matches', () => {
     const response = await chai.request(app).get('/matches');
 
     expect(response.status).to.equal(200);
+    expect(response.body).to.be.an('array');
   });
 
   it('Recupera todas as partidas em andamento', async () => {
